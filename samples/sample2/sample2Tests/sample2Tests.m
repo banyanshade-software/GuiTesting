@@ -8,8 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <XCTest/XCTest.h>
+#import "GUITestSupport.h"
+#import "DrawView.h"
 
-@interface sample2Tests : XCTestCase
+@interface sample2Tests : XCTestCaseGUI
 
 @end
 
@@ -25,16 +27,19 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
+- (void)test1 {
+    DrawView *dv = (DrawView *) [self findViewOfClass:@"DrawView" string:nil tag:-1];
+    XCTAssert(dv);
+    [self sleep:1];
+    [self sendMouseClickToControl:dv];
+    [self sleep:1];
+    [self sendMouseClickToControl:dv];
+    [self sleep:1];
+    [self sendMouseClickToControl:dv onRight:YES];
+    [self sendMouseClickToControl:dv onLeft:YES];
+    [self sleep:2];
+    XCTAssert(4==dv.numberOfPoints);
     XCTAssert(YES, @"Pass");
-}
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
 }
 
 @end

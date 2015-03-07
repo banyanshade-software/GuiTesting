@@ -12,6 +12,8 @@
 		1BE5E5C11AAB36FA00B2F27B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BE5E5C01AAB36FA00B2F27B /* Images.xcassets */; };
 		1BE5E5C41AAB36FA00B2F27B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE5E5C21AAB36FA00B2F27B /* MainMenu.xib */; };
 		1BE5E5D01AAB36FB00B2F27B /* Example1Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5E5CF1AAB36FB00B2F27B /* Example1Tests.m */; };
+		1BE5E5DA1AAB3A2700B2F27B /* GUITestSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5E5D91AAB3A2600B2F27B /* GUITestSupport.m */; };
+		1BE5E6101AAB549000B2F27B /* LogTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5E60F1AAB549000B2F27B /* LogTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,10 @@
 		1BE5E5C91AAB36FB00B2F27B /* Example1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Example1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BE5E5CE1AAB36FB00B2F27B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BE5E5CF1AAB36FB00B2F27B /* Example1Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Example1Tests.m; sourceTree = "<group>"; };
+		1BE5E5D91AAB3A2600B2F27B /* GUITestSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GUITestSupport.m; path = ../../../GUITestSupport.m; sourceTree = "<group>"; };
+		1BE5E5DB1AAB3AC200B2F27B /* GUITestSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GUITestSupport.h; path = ../../../GUITestSupport.h; sourceTree = "<group>"; };
+		1BE5E60E1AAB549000B2F27B /* LogTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTextField.h; sourceTree = "<group>"; };
+		1BE5E60F1AAB549000B2F27B /* LogTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,8 @@
 			children = (
 				1BE5E5BB1AAB36FA00B2F27B /* AppDelegate.h */,
 				1BE5E5BC1AAB36FA00B2F27B /* AppDelegate.m */,
+				1BE5E60E1AAB549000B2F27B /* LogTextField.h */,
+				1BE5E60F1AAB549000B2F27B /* LogTextField.m */,
 				1BE5E5C01AAB36FA00B2F27B /* Images.xcassets */,
 				1BE5E5C21AAB36FA00B2F27B /* MainMenu.xib */,
 				1BE5E5B91AAB36FA00B2F27B /* Supporting Files */,
@@ -97,6 +105,8 @@
 		1BE5E5CC1AAB36FB00B2F27B /* Example1Tests */ = {
 			isa = PBXGroup;
 			children = (
+				1BE5E5D91AAB3A2600B2F27B /* GUITestSupport.m */,
+				1BE5E5DB1AAB3AC200B2F27B /* GUITestSupport.h */,
 				1BE5E5CF1AAB36FB00B2F27B /* Example1Tests.m */,
 				1BE5E5CD1AAB36FB00B2F27B /* Supporting Files */,
 			);
@@ -212,6 +222,7 @@
 			files = (
 				1BE5E5BF1AAB36FA00B2F27B /* main.m in Sources */,
 				1BE5E5BD1AAB36FA00B2F27B /* AppDelegate.m in Sources */,
+				1BE5E6101AAB549000B2F27B /* LogTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BE5E5D01AAB36FB00B2F27B /* Example1Tests.m in Sources */,
+				1BE5E5DA1AAB3A2700B2F27B /* GUITestSupport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +410,7 @@
 				1BE5E5D51AAB36FB00B2F27B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1BE5E5D61AAB36FB00B2F27B /* Build configuration list for PBXNativeTarget "Example1Tests" */ = {
 			isa = XCConfigurationList;
@@ -406,6 +419,7 @@
 				1BE5E5D81AAB36FB00B2F27B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

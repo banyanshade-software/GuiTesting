@@ -12,6 +12,8 @@
 		1BE5E5F01AAB47D700B2F27B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BE5E5EF1AAB47D700B2F27B /* Images.xcassets */; };
 		1BE5E5F31AAB47D700B2F27B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE5E5F11AAB47D700B2F27B /* MainMenu.xib */; };
 		1BE5E5FF1AAB47D700B2F27B /* sample2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5E5FE1AAB47D700B2F27B /* sample2Tests.m */; };
+		1BE5E60A1AAB482F00B2F27B /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5E6091AAB482F00B2F27B /* DrawView.m */; };
+		1BE5E60D1AAB4ABA00B2F27B /* GUITestSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5E60B1AAB4ABA00B2F27B /* GUITestSupport.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,10 @@
 		1BE5E5F81AAB47D700B2F27B /* sample2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sample2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BE5E5FD1AAB47D700B2F27B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BE5E5FE1AAB47D700B2F27B /* sample2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sample2Tests.m; sourceTree = "<group>"; };
+		1BE5E6081AAB482F00B2F27B /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		1BE5E6091AAB482F00B2F27B /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		1BE5E60B1AAB4ABA00B2F27B /* GUITestSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GUITestSupport.m; path = ../../../GUITestSupport.m; sourceTree = "<group>"; };
+		1BE5E60C1AAB4ABA00B2F27B /* GUITestSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GUITestSupport.h; path = ../../../GUITestSupport.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,8 @@
 				1BE5E5EF1AAB47D700B2F27B /* Images.xcassets */,
 				1BE5E5F11AAB47D700B2F27B /* MainMenu.xib */,
 				1BE5E5E81AAB47D700B2F27B /* Supporting Files */,
+				1BE5E6081AAB482F00B2F27B /* DrawView.h */,
+				1BE5E6091AAB482F00B2F27B /* DrawView.m */,
 			);
 			path = sample2;
 			sourceTree = "<group>";
@@ -97,6 +105,8 @@
 		1BE5E5FB1AAB47D700B2F27B /* sample2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				1BE5E60B1AAB4ABA00B2F27B /* GUITestSupport.m */,
+				1BE5E60C1AAB4ABA00B2F27B /* GUITestSupport.h */,
 				1BE5E5FE1AAB47D700B2F27B /* sample2Tests.m */,
 				1BE5E5FC1AAB47D700B2F27B /* Supporting Files */,
 			);
@@ -212,6 +222,7 @@
 			files = (
 				1BE5E5EE1AAB47D700B2F27B /* main.m in Sources */,
 				1BE5E5EC1AAB47D700B2F27B /* AppDelegate.m in Sources */,
+				1BE5E60A1AAB482F00B2F27B /* DrawView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BE5E5FF1AAB47D700B2F27B /* sample2Tests.m in Sources */,
+				1BE5E60D1AAB4ABA00B2F27B /* GUITestSupport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

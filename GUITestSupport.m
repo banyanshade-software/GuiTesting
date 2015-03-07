@@ -5,6 +5,28 @@
 //  Created by Daniel BRAUN on 14/10/2014.
 //  Copyright (c) 2014 Daniel BRAUN. All rights reserved.
 //
+/*
+ Copyright 2014-2015 Daniel Braun
+ All rights reserved.
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of
+ this software and associated documentation files (the "Software"), to deal in
+ the Software without restriction, including without limitation the rights to
+ use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ the Software, and to permit persons to whom the Software is furnished to do so,
+ subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ 
+*/
 
 #import "GUITestSupport.h"
 #import <Cocoa/Cocoa.h>
@@ -360,20 +382,28 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
 
 - (void) sendMouseClickToControl:(NSView *)ctrl
 {
-    [self sendMouseClickToControl:ctrl onRight:NO];
+    [self sendMouseClickToControl:ctrl onRight:NO onLeft:NO];
+}
+- (void) sendMouseClickToControl:(NSView *)ctrl onRight:(BOOL)onright
+{
+    [self sendMouseClickToControl:ctrl onRight:onright onLeft:NO];
+}
+
+- (void) sendMouseClickToControl:(NSView *)ctrl onLeft:(BOOL)onleft
+{
+    [self sendMouseClickToControl:ctrl onRight:NO onLeft:onleft];
 }
 
 
-- (void) sendMouseClickToControl:(NSView *)ctrl onRight:(BOOL)onright
-{
 
-    //BOOL fr = [ctrl becomeFirstResponder];
-    //XCTAssert(fr, @"control cannot become first responder");
-    if ((0)) return;
+- (void) sendMouseClickToControl:(NSView *)ctrl onRight:(BOOL)onright onLeft:(BOOL)onleft
+{
     NSRect r = [ctrl bounds];
     NSPoint p;
     if (onright) {
-        p = NSMakePoint(NSMaxX(r)+10, NSMidY(r));
+        p = NSMakePoint(NSMaxX(r)-1, NSMidY(r));
+    } else if (onleft) {
+        p = NSMakePoint(NSMinX(r)+1, NSMidY(r));
     } else {
         p = NSMakePoint(NSMidX(r), NSMidY(r));
     }
@@ -385,8 +415,8 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
     // http://lists.apple.com/archives/cocoa-dev/2011/Jan/msg00736.html
     static int cnt = 233333;
     
-    NSEvent *eventDn = [NSEvent mouseEventWithType:NSLeftMouseDown location:pw modifierFlags:0 timestamp:[NSDate timeIntervalSinceReferenceDate] windowNumber:wnum context:[NSGraphicsContext currentContext] eventNumber:cnt++ clickCount:1 pressure:1.0];
-    NSEvent *eventUp = [NSEvent mouseEventWithType:NSLeftMouseUp location:pw modifierFlags:0 timestamp:[NSDate timeIntervalSinceReferenceDate]+0.001 windowNumber:wnum context:[NSGraphicsContext currentContext] eventNumber:cnt++ clickCount:1 pressure:1.0];
+    NSEvent *eventDn = [NSEvent mouseEventWithType:NSLeftMouseDown location:pw modifierFlags:0 timestamp:[NSDate timeIntervalSinceReferenceDate]-0.002 windowNumber:wnum context:[NSGraphicsContext currentContext] eventNumber:cnt++ clickCount:1 pressure:1.0];
+    NSEvent *eventUp = [NSEvent mouseEventWithType:NSLeftMouseUp location:pw modifierFlags:0 timestamp:[NSDate timeIntervalSinceReferenceDate]+0.00 windowNumber:wnum context:[NSGraphicsContext currentContext] eventNumber:cnt++ clickCount:1 pressure:1.0];
 
     if ((1)) {
         [NSApp postEvent:eventDn atStart:NO];
@@ -398,7 +428,7 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
         //usleep(2000);
         [NSApp sendEvent:eventUp];
     }
-    [ctrl becomeFirstResponder];
+    //[ctrl becomeFirstResponder];
     [self consumeEvents];
 }
 

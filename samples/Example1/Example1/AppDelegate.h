@@ -10,6 +10,10 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property (strong,nonatomic) NSNumber *a;
+@property (strong,nonatomic) NSNumber *b;
+
+@property (readonly,nonatomic) NSNumber *result;
 
 @end
 

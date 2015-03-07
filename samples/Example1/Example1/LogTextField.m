@@ -10,10 +10,18 @@
 
 @implementation LogTextField
 
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
+- (void) mouseDown:(NSEvent *)theEvent
+{
+    NSLog(@"mouseDown: %@\n", theEvent);
+    [super mouseDown:theEvent];
 }
+
+- (void) mouseUp:(NSEvent *)theEvent
+{
+    NSLog(@"mouseUp: %@\n", theEvent);
+    [super mouseUp:theEvent];
+}
+
+
 
 @end

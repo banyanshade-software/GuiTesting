@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface DrawView : NSView
-
+@property (nonatomic,readonly) NSInteger numberOfPoints;
 @end
