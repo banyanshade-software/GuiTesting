@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Daniel BRAUN. All rights reserved.
 //
 
-#import "DbnTestSupport.h"
+#import "GUITestSupport.h"
 #import <Cocoa/Cocoa.h>
 #import <AppKit/NSEvent.h>
 
@@ -357,6 +357,13 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
         [NSApp sendEvent: event];
     }
 }
+
+- (void) sendMouseClickToControl:(NSView *)ctrl
+{
+    [self sendMouseClickToControl:ctrl onRight:NO];
+}
+
+
 - (void) sendMouseClickToControl:(NSView *)ctrl onRight:(BOOL)onright
 {
 
@@ -366,7 +373,7 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
     NSRect r = [ctrl bounds];
     NSPoint p;
     if (onright) {
-        p = NSMakePoint(NSMaxX(r)-1, NSMidY(r));
+        p = NSMakePoint(NSMaxX(r)+10, NSMidY(r));
     } else {
         p = NSMakePoint(NSMidX(r), NSMidY(r));
     }
