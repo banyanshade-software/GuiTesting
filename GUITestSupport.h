@@ -47,22 +47,49 @@
 
 @interface XCTestCaseGUI : XCTestCase
 
-- (void) activateAndWaitAppActive;
-- (void) waitAppActive;
+/* override mainWindowTitle if you have several windows. Each test case
+ * shall then focuse on a given window
+ */
 - (NSString *) mainWindowTitle;
-- (void) waitUntil:(BOOL(^)(void))cond;
-- (void) sleep:(NSTimeInterval)duration;
-- (NSWindow *) curWindow;
+
+/*
+ * view finding : findViewOfClass:string:tag: is the main method to find view in view hierarchy
+ * for debug purpose, you can call currentDescription:
+ */
+- (NSView *)findViewOfClass:(NSString*)classname string:(NSString *)str_or_nil tag:(int)tag_or_minus1;
 - (NSDictionary *) currentDescription;
 
-- (NSView *)findViewOfClass:(NSString*)classname string:(NSString *)str_or_nil tag:(int)tag_or_minus1;
-- (void) clickButton:(NSButton *)b;
+- (NSWindow *) curWindow;
+
+/*
+ * consume NSEvent and wait for conditions
+ */
+- (void) waitUntil:(BOOL(^)(void))cond;
+- (void) sleep:(NSTimeInterval)duration;
+
+/* 
+ * application activation. You normally don't have to call these methods, it's done in setUp
+ */
+- (void) activateAndWaitAppActive;
+- (void) waitAppActive;
+
+/*
+ * send keyboard and mouse events to the GUI
+ * this is preliminary, and handles modifier and other mouse buttons
+ * as well as mouse position
+ */
 - (void) setField:(NSTextField *)f string:(NSString *)s;
 
 - (void) sendKeyboard:(NSString *)chars toControl:(NSControl *)ctrl;
 - (void) sendMouseClickToControl:(NSView *)ctrl;
 - (void) sendMouseClickToControl:(NSView *)ctrl onRight:(BOOL)onright;
 - (void) sendMouseClickToControl:(NSView *)ctrl onLeft:(BOOL)onleft;
+
+/*
+ * more high level interraction, directly invoking the methods of the control
+ */
+- (void) clickButton:(NSButton *)b;
+
 
 @end
 

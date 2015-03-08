@@ -27,6 +27,9 @@
 }
 
 - (void)test1 {
+    /* 
+     * basic test : input two numbers to field "a" and "b", and check the result
+     */
     NSTextField *f1 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:1];
     NSTextField *f2 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:2];
     NSTextField *f3 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:3];
@@ -36,7 +39,7 @@
     [self sendMouseClickToControl:f1];[self sleep:0.1];
     [self sendKeyboard:@"\n2\n" toControl:f1];
     [self sleep:0.1];
-    [self sendMouseClickToControl:f2 onRight:NO];[self sleep:0.1];
+    [self sendMouseClickToControl:f2];[self sleep:0.1];
     [self sendKeyboard:@"\n3\n" toControl:f2];
     [self sleep:0.1];
 
@@ -45,6 +48,11 @@
 }
 
 - (void)testNextKeyView {
+    /*
+     * in the application, we carrefully set the nextKeyView so that focus goes through the fields by
+     * pressing tab key.
+     * we check this in this test, by sending tab keystroke
+     */
     NSTextField *f1 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:1];
     NSTextField *f2 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:2];
     NSTextField *f3 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:3];
@@ -65,6 +73,10 @@
 
 
 - (void)test2 {
+    /*
+     * another test, showing that when sending text to a NSTextField, we can either append
+     * the content (default) or replace it (by sending a \n before)
+     */
     NSTextField *f1 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:1];
     NSTextField *f2 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:2];
     NSTextField *f3 = (NSTextField *)[self findViewOfClass:@"NSTextField" string:nil tag:3];
