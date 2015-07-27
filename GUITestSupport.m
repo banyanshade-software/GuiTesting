@@ -413,7 +413,7 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
     NSInteger wnum = w.windowNumber;
     
     // http://lists.apple.com/archives/cocoa-dev/2011/Jan/msg00736.html
-    static int cnt = 233333;
+    static int cnt = 1234;
     
     NSEvent *eventDn = [NSEvent mouseEventWithType:NSLeftMouseDown location:pw modifierFlags:0 timestamp:[NSDate timeIntervalSinceReferenceDate]-0.002 windowNumber:wnum context:[NSGraphicsContext currentContext] eventNumber:cnt++ clickCount:1 pressure:1.0];
     NSEvent *eventUp = [NSEvent mouseEventWithType:NSLeftMouseUp location:pw modifierFlags:0 timestamp:[NSDate timeIntervalSinceReferenceDate]+0.00 windowNumber:wnum context:[NSGraphicsContext currentContext] eventNumber:cnt++ clickCount:1 pressure:1.0];
@@ -522,6 +522,7 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
 - (void)setUp {
     [super setUp];
     NSDocument *d = [self setupNewDoc];
+    NSLog(@"------ new doc %p\n", d);
     XCTAssert(d == [self curDoc]);
 }
 
