@@ -126,12 +126,25 @@
      [NSNumber numberWithFloat:self.frame.size.height], @"height",
      nil];
 #endif
-    if ([self isKindOfClass:[NSTextField class]]) {
-       // NSLog(@"bjk\n");
+    
+    if ([[self className]isEqual:@"BSSUI_ToolbarButton"]) {
+       //NSLog(@"bjk\n");
     }
     NSString *txt = [self testText];
-   
+    NSString *vaid = [self accessibilityIdentifier];
+    if (!vaid && [self isKindOfClass:[NSControl class]]) {
+        // accessibility is in cell
+        id sub =  NSAccessibilityUnignoredDescendant(self);
+        vaid = [sub accessibilityIdentifier];
+        if (vaid) {
+            //NSLog(@"got vaid %@ for %@\n", vaid, self);
+        }
+    } else if (vaid) {
+        NSLog(@"vaid %@\n", vaid);
+    }
+    if (!vaid) vaid = @"";
 
+    
     NSDictionary *description =
     [NSDictionary dictionaryWithObjectsAndKeys:
         [NSNumber numberWithInteger:(NSInteger)self], @"address",
@@ -139,6 +152,7 @@
         //frame, @"frame",
         [NSNumber numberWithInteger:[self tag]], @"tag",
         txt, @"text",
+        vaid, @"aid",
         [self valueForKeyPath:@"subviews.testDescription"], @"subviews",
      nil];
    
@@ -166,10 +180,12 @@ static NSView *checkDic(NSDictionary *testdesc, NSString *className, NSString *s
 {
     int vtag = [[testdesc objectForKey:@"tag"]intValue];
     NSString *vtxt = [testdesc objectForKey:@"text"];
+    NSString *vaid = [testdesc objectForKey:@"aid"];
     NSString *vclassName = [testdesc objectForKey:@"className"];
     if (str) {
         NSRange r = [vtxt rangeOfString:str];
-        if (r.location == NSNotFound) return nil;
+        NSRange r2 = [vaid rangeOfString:str];
+        if ((r.location == NSNotFound) && (r2.location == NSNotFound)) return nil;
     }
     if ((tag !=-1) && (tag != vtag)) return nil;
     if (className && ![className isEqualToString:vclassName]) return nil;
