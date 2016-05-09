@@ -1,6 +1,6 @@
 //
 //  DbnTestSupport.h
-//  SmartBank
+//  ZenAccounting http://www.zenaccounting-app.com
 //
 //  Created by Daniel BRAUN on 14/10/2014.
 //  Copyright (c) 2014 Daniel BRAUN. All rights reserved.
