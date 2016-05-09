@@ -94,6 +94,20 @@
     return nil;
 }
 
+- (NSArray<NSView *>*) findAllSubviewsOfClass:(Class)c havingText:(NSString *)text
+{
+    NSArray *r = nil;
+    if ([self isKindOfClass:c]) {
+        if (!text || [[self testText]isEqualToString:text]) r = @[self];
+    }
+    if (!r) r = @[];
+    NSArray *sub = [self subviews];
+    for (NSView *v in sub) {
+        NSArray *t = [v findAllSubviewsOfClass:c havingText:text];
+        if ([t count]) r = [r arrayByAddingObjectsFromArray:t];
+    }
+    return r;
+}
 
 - (NSView *) findSubviewOfClass:(Class)c havingTextPrefix:(NSString *)text
 {
@@ -544,6 +558,29 @@ static NSView *testFindView(NSDictionary *testdesc, NSString *className, NSStrin
 
 - (void)tearDown {
     [self closeAllDoc];
+}
+
+@end
+
+@implementation XCTestCaseGUIdelegate
+
+
+- (void)setUp {
+    [super setUp];
+    SEL m = [self setupMsg];
+    XCTAssert(m);
+    [[NSApp delegate] performSelector:m withObject:nil];
+    NSDocument *d = [self curDoc];
+    NSLog(@"------ new doc %p\n", d);
+}
+
+- (void)tearDown {
+    [self closeAllDoc];
+}
+
+- (SEL) setupMsg
+{
+    return (SEL)0;
 }
 
 @end

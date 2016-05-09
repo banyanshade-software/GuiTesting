@@ -102,7 +102,12 @@
 
 @end
 
+// init with a new empty doc
 @interface XCTestCaseGUINewDoc : XCTestCaseGUIDoc
+@end
+
+// init by sending specific msg to delegate
+@interface XCTestCaseGUIdelegate : XCTestCaseGUIDoc
 @end
 
 @interface NSView (Tests)
@@ -110,5 +115,5 @@
 - (NSView *) findSuperViewOfClass:(Class)c;
 - (NSView *) findSubviewOfClass:(Class)c havingText:(NSString *)text;
 - (NSView *) findSubviewOfClass:(Class)c havingTextPrefix:(NSString *)text;
-
+- (NSArray<NSView *>*) findAllSubviewsOfClass:(Class)c havingText:(NSString *)text;
 @end
